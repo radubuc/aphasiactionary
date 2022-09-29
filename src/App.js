@@ -25,13 +25,18 @@ function App() {
 
   return (
     <Container fluid>
-      <HeaderNav />
-      <UtilityNav />
-      <CreateEntryForm />
+      <Router>
+        <div>
+          <HeaderNav />
+          <UtilityNav />
+          <CreateEntryForm />
 
 
 
-      <Footer />
+          <Footer />
+        </div>
+
+      </Router>
     </Container>
 
 

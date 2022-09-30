@@ -26,6 +26,10 @@ header {
     padding: 10px 0px;
     margin-top: 12px;
 }
+
+header > div > .logo {
+    margin-left:24px;
+}
 /* HEADER STYLES END */
 
 /* NAV & BUTTON STYLES START */

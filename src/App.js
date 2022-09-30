@@ -1,7 +1,10 @@
 import React from 'react';
+
 import HeaderNav from './components/HeaderNav';
 import UtilityNav from './components/UtilityNav';
 import Footer from './components/Footer';
+import ViewAllEntries from './components/ViewAllEntries'
+
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CreateEntryForm from './components/CreateEntryForm';
@@ -15,13 +18,13 @@ import {
 } from 'react-router-dom';
 
 function App() {
-  const dictionaryEntries = [
-    {
-      id: 1,
-      key: "test word",
-      value: "test definition"
-    },
-  ]
+  // const entries = [
+  //   {
+  //     id: 1,
+  //     key: "test word",
+  //     value: "test definition"
+  //   },
+  // ]
 
   return (
     <Container fluid>
@@ -31,6 +34,7 @@ function App() {
           <UtilityNav />
           <CreateEntryForm />
 
+          <ViewAllEntries />
 
 
           <Footer />
@@ -50,7 +54,18 @@ export default App;
 
 //Set up array as props, pass props into Entries component when finished setting up props
 
-{/* <p>THIS IS A SPACER</p>
-<p>THIS IS A SPACER</p> */}
+// Components 
+// 1. CreateEntryBtn
+// 2. CreateEntryForm (Create)
+// 3. DeleteEntry (Delete)
+// 4. EditEntry (Update)
+// 5. Entries (Read)
+// 6. Entry? Maybe not needed anymore
+// 7. Footer
+// 8. HeaderNav
+// 9. UtilityNav
+// 10. Router
+
+//Note: Login and Sign up buttons are present in nav, but they are not hooked up yet, so they don't count towards the 10 component requirement
 
 

@@ -1,14 +1,17 @@
 import React from "react";
+
 import CreateEntryBtn from "./CreateEntryBtn";
 import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
+
 import '../styles.css';
 
 
 const CreateEntryForm = () => {
     return (
         <div className="wrapper">
-            <div className="container">
+            <Container>
                 <Form>
                     <Row>
                         <Col>
@@ -28,11 +31,8 @@ const CreateEntryForm = () => {
                     </Row>
 
                 </Form>
-            </div>
+            </Container>
         </div>
-
-
-
     );
 }
 

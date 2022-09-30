@@ -1,28 +1,52 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import CreateEntryForm from './CreateEntryForm';
+import Entries from '.Entries'
+import ViewAllEntries from './ViewAllEntries';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useRouteMatch
+  } from 'react-router-dom';
+
 import Button from 'react-bootstrap/Button';
+
 import '../styles.css';
+
 
 //Should I use class component or functional component? Depends on if I need to access state I think
 const UtilityNav = () => {
     return (
-        <div>
-            <nav className="d-flex justify-content-center">
-                <Button href="#" className="utility-nav">
-                    <Link to="/create-entry" className='link'>Create Entry</Link>
-                </Button>
-                <Button href="#" className="utility-nav">
-                    <Link to="/view-all-entries" className='link'>View All Entries</Link>
-                </Button>
-                
-            </nav>
-        </div>
+        <Router>
+            <div>
+                <nav className="d-flex justify-content-center">
+                    <Button href="#" className="utility-nav">
+                        <Link to="/create-entry" className='link'>Create Entry</Link>
+                    </Button>
+                    <Button href="#" className="utility-nav">
+                        <Link to="/view-all-entries" className='link'>View All Entries</Link>
+                    </Button>
+                </nav>
+
+                <Switch>
+                    <Route path="/create-entry">
+                        <CreateEntryForm />
+                    </Route>
+                    <Route path="/view-all-entries">
+                        <ViewAllEntries entries={entries} />
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
+        //Should I call CreateEntryForm component in Switch above?
+        //IDK what to do with entries in Switch. I am likening them to Posts in router-practice-3. I moved my entries object from App.js to Entries component
     )
 };
 
 export default UtilityNav;
 
-//Will I need to change anchor tags to something else in order to add JS functionality later?
+//Do I need a home? Will it crash at the root without a home? See router-practice-3 
 
 // eslint-disable-next-line
 {/* <a href="#" className="utility-nav">Create Entry</a>

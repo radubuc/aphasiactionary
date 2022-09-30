@@ -3,11 +3,9 @@ import React from 'react';
 import HeaderNav from './components/HeaderNav';
 import UtilityNav from './components/UtilityNav';
 import Footer from './components/Footer';
-import ViewAllEntries from './components/ViewAllEntries'
 
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CreateEntryForm from './components/CreateEntryForm';
 
 import {
   BrowserRouter as Router,
@@ -32,9 +30,6 @@ function App() {
         <div>
           <HeaderNav />
           <UtilityNav />
-          <CreateEntryForm />
-
-          <ViewAllEntries />
 
 
           <Footer />

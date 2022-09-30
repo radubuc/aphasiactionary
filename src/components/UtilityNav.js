@@ -1,6 +1,5 @@
 import React from 'react';
 import CreateEntryForm from './CreateEntryForm';
-import Entries from '.Entries'
 import ViewAllEntries from './ViewAllEntries';
 import {
     BrowserRouter as Router,
@@ -8,7 +7,7 @@ import {
     Route,
     Link,
     useRouteMatch
-  } from 'react-router-dom';
+} from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 
@@ -34,13 +33,17 @@ const UtilityNav = () => {
                         <CreateEntryForm />
                     </Route>
                     <Route path="/view-all-entries">
-                        <ViewAllEntries entries={entries} />
+                        <ViewAllEntries entries={ViewAllEntries.entries} />
+                    </Route>
+                    <Route path="/">
+                        <CreateEntryForm />
                     </Route>
                 </Switch>
             </div>
         </Router>
         //Should I call CreateEntryForm component in Switch above?
-        //IDK what to do with entries in Switch. I am likening them to Posts in router-practice-3. I moved my entries object from App.js to Entries component
+        //IDK what to do with entries in Switch. I am likening them to Posts in router-practice-3. I moved my entries object from App.js to Entries component, so I imported ViewAllEntries and used it to access to entries object. IDK if it works yet
+        //Can I set / (root) equal to /create-entry to make it the default view?
     )
 };
 

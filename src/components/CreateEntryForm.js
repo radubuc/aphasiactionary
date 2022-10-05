@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from 'react';
 
-import App from "../App.js"
+import { aphasiactionaryAPI } from './RestApi';
+
+import { InputContext } from "../App.js"
 import CreateEntryBtn from "./CreateEntryBtn";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
@@ -8,25 +10,69 @@ import { Row, Col } from "react-bootstrap";
 
 import '../styles.css';
 
+//In Dictionary API example, his header does the work on my CreateEntryForm
 
-const CreateEntryForm = () => {
+const CreateEntryForm = () => { //Don't need props in Dictionary API example
+    //From Matt's example - Needs props
+    // console.log("CreateEntryForm props:", props);
+    // const { entry, updateEntry } = props;
+    // console.log("rendering CreateEntryForm");
+
+    const [value, setValue] = useState("");
+    const { inputText, setInputText } = useContext(InputContext);
+    // console.log(inputText)
+
+    //Handle input text in form on change
+    const handleInputText = (e) => {
+        setInputText(e.target.value);
+    }
+
+    //Should onSubmit go here or in CreateEntry Btn?
+    //Goal: When the button is clicked, the word and definition created should populate in table in ViewAllEntries component
+    const handleSubmit = () => {
+        setInputText(value);
+        setValue(""); //Resets entry form to blank after submit
+
+
+        // console.log("handleSubmit event:", event);
+        // event.preventDefault();
+        // console.log("handleSubmit entry", entry);
+        // aphasiactionaryAPI.post(entry);
+
+        // setEntry(""); //setEntry or setCurrentEntry?? I think entry/setEntry will be used for creating a new entry and currentEntry/setCurrentEntry will be for updating an entry. Resets entry form to blank after submit
+        // updateEntry(entry);
+    }
+
+    //Allows user to submit form with Enter key instead of clicking button. Note I only have it applied to the What They May Mean field because we wouldn't want them to be able to submit a definition w/o entering a word
+    const handleInputKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            setInputText(value);
+            setValue("");
+        }
+    }
+
     return (
-        <div className="wrapper">
+        <div className="wrapper"> 
+        {/* Try class name "container mx-auto" or "mx-auto" depending on where I try it */}
             <Container>
                 <Form>
                     <Row>
                         <Col>
                             <h2>What they say</h2>
-                            <Form.Control type="text" placeholder="Word or phrase">inputText={App.inputText}</Form.Control>
+                            <Form.Control type="text" placeholder="Word or phrase" onChange={handleInputText} />
                         </Col>
-                        <Col>
-                            <h2>What they may mean</h2>
-                            <Form.Control as="textarea" placeholder="Word, phrase or example">entries={App.entries}</Form.Control>
-                        </Col>
+                        {/* ADD A REQUIREMENT TO BOTH FIELDS | inputText={App.inputText} */}
                     </Row>
                     <Row>
                         <Col>
-                            <CreateEntryBtn />
+                            <h2>What they may mean</h2>
+                            <Form.Control as="textarea" placeholder="Word, phrase or example"onChange={handleInputText} value={value} onKeyDown={handleInputKeyDown}/>
+                        </Col>
+                        {/* entries={App.entries} */}
+                    </Row>
+                    <Row>
+                        <Col>
+                            <CreateEntryBtn onClick={handleSubmit}/>
                         </Col>
 
                     </Row>
@@ -38,6 +84,9 @@ const CreateEntryForm = () => {
 }
 
 export default CreateEntryForm;
+
+//Make POST request in CreateEntryForm. Make GET request in ViewAllEntries
+
 
 //Should I pass in currentEntry or entries on line 24?
 

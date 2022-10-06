@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
-import { aphasiactionaryAPI } from './RestApi';
+// import { aphasiactionaryAPI } from './RestApi';
+
+import App from '../App.js';
 
 import { InputContext } from "../App.js"
 import CreateEntryBtn from "./CreateEntryBtn";
@@ -59,14 +61,15 @@ const CreateEntryForm = () => { //Don't need props in Dictionary API example
                     <Row>
                         <Col>
                             <h2>What they say</h2>
-                            <Form.Control type="text" placeholder="Word or phrase" onChange={handleInputText} />
+                            <Form.Control type="text" placeholder="Word or phrase" onChange={handleInputText} newEntry={App.newEntry} setNewEntry={App.setNewEntry} />
                         </Col>
                         {/* ADD A REQUIREMENT TO BOTH FIELDS | inputText={App.inputText} */}
                     </Row>
                     <Row>
                         <Col>
                             <h2>What they may mean</h2>
-                            <Form.Control as="textarea" placeholder="Word, phrase or example"onChange={handleInputText} value={value} onKeyDown={handleInputKeyDown}/>
+                            <Form.Control as="textarea" placeholder="Word, phrase or example" onChange={handleInputText} onKeyDown={handleInputKeyDown}/>
+                            {/* value={value} */}
                         </Col>
                         {/* entries={App.entries} */}
                     </Row>

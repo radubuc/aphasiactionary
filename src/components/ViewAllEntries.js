@@ -16,7 +16,7 @@ function ViewAllEntries() {
     const [error, setError] = useState("");
 
     useEffect(() => {
-
+// https://www.youtube.com/watch?v=BfnbPwqHhfY 24:01
     }, [])
 
     return (

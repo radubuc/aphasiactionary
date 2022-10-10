@@ -29,7 +29,7 @@ function App() {
   const getAllEntries = async () => { //async function to get entries from api
     const entriesFromServer = await aphasiactionaryAPI.get(); //get comments from api and store in variable
     console.log(entriesFromServer);
-    setEntries(entriesFromServer); //update comments state with comments from api
+    setEntries(entriesFromServer); //update comments state with comments from api - setEntries(entriesFromServer)
   };
 
   useEffect(() => {

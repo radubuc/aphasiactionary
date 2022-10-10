@@ -17,24 +17,6 @@ class AphasiactionaryAPI {
     }
   };
 
-  //PUT - Update one entry's definition request
-  // put = async (wordValue) => { //Should this take in wordKey?
-  //   console.log("word value:", wordValue);
-  //   try {
-  //     const resp = await fetch(`${DICTIONARY_ENDPOINT}/${wordValue._id}`, {
-  //       method: "PUT",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(wordValue),
-  //     });
-  //     console.log("resp:", resp);
-  //     return await resp.json();
-  //   } catch (error) {
-  //     console.log("There was an error while updating your definition. Please try again.", error);
-  //   }
-  // };
-
   //POST - Create entry request
   // post = async (wordKey) => {
   //   console.log("word key", wordKey);
@@ -56,6 +38,24 @@ class AphasiactionaryAPI {
   //     return (window.location = "/view-all-entries"); //view-all-entries or create-entry?
   //   } catch (error) {
   //     console.log("There was an error while adding your entry. Please try again.", error);
+  //   }
+  // };
+
+  //PUT - Update one entry's definition request
+  // put = async (wordValue) => { //Should this take in wordKey?
+  //   console.log("word value:", wordValue);
+  //   try {
+  //     const resp = await fetch(`${DICTIONARY_ENDPOINT}/${wordValue._id}`, {
+  //       method: "PUT",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(wordValue),
+  //     });
+  //     console.log("resp:", resp);
+  //     return await resp.json();
+  //   } catch (error) {
+  //     console.log("There was an error while updating your definition. Please try again.", error);
   //   }
   // };
 

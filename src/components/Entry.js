@@ -1,8 +1,11 @@
 import React from 'react';
 
-const Entry = (props) => {
-    console.log("MyEntry", props.myEntry);
-    const { entry, updateEntry } = props;
+const Entry = ({entries, entry}) => {
+    console.log("Entry test", entry);
+    console.log("Entries test:", entries);
+
+    // console.log("MyEntry", props.myEntry);
+    // const { entry, updateEntry } = props;
 
     // const addNewEntry = (room) => {
     //     return updateEntry({ ...entry, wordKey: [...entry.wordKey, wordKey], wordValue: [...entry.wordValue, wordValue]}) //IDK? Modeling after houseAPI example
@@ -13,6 +16,13 @@ const Entry = (props) => {
     //     await aphasiactionaryAPI.delete(id);
     //     updateEntry(); //Updates state after deleting entry and updating current entries
     // }
+
+    return (
+        console.log("state variable test 2", entries),
+        <div>
+            <h1>{entry}</h1>
+        </div>
+    )
     
 }
 

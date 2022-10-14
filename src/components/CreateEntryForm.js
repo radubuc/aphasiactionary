@@ -11,7 +11,6 @@ import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 
 import '../styles.css';
-import { propTypes } from 'react-bootstrap/esm/Image.js';
 
 //In Dictionary API example, his header does the work on my CreateEntryForm
 

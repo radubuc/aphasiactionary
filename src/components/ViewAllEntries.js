@@ -11,10 +11,12 @@ import Container from 'react-bootstrap/Container';
 import '../styles.css';
 
 //Since the entries will change, I don't think I should use a const. I think I should make it a function to grab all the entries? function name() {} or arrow function?
-function ViewAllEntries(props) {
-    console.log("ViewAllEntries props:", props.entries);
+// function ViewAllEntries(props) {
+    const ViewAllEntries = ({entries}) => {
 
-    const myEntries = props.entries;
+    // console.log("ViewAllEntries props:", props.entries);
+
+    // const myEntries = props.entries;
     //In Dictionary API example, his ResultList does the work on my ViewAllEntries
     const { inputText, setInputText } = useContext(InputContext);
     const [response, setResponse] = useState(null); //Null or empty string?
@@ -29,14 +31,16 @@ function ViewAllEntries(props) {
 
     //NEED TO ROUTE THRU ENTRY COMPONENT FIRST BEFORE GETTING TO VIEWALLENTRIES COMPONENT??? Makes sense
 
-    const getMyEntries = () => {
-        for (let i = 0; i < myEntries.length; i++) {
-            return <Entry entry={myEntries[i]} />
-        }
-    }
+    // const getMyEntries = () => {
+    //     for (let i = 0; i < myEntries.length; i++) {
+    //         console.log("Checking state of getMyEntries:", myEntries);
+    //         return <Entry entry={myEntries[i]} />
+    //     }
+    // }
 
 
     return (
+        console.log("state variable test", entries),
         <div className="wrapper">
             <Container>
                 <Table striped bordered hover>
@@ -48,8 +52,19 @@ function ViewAllEntries(props) {
                             <th>Delete word</th>
                         </tr>
                     </thead>
-                    {getMyEntries}
-                    
+                    {/* {getMyEntries} */}
+                    {/* <tr key={myEntries[i].id}>
+                        <td>{myEntries[i].wordKey}</td>
+                        <td>{entry.wordValue}</td>
+                        <td>test</td>
+                        <td>test</td>
+                    </tr> */}
+                    {entries.map((entry) => {
+                        <Entry key={entry.id} entries={entries} entry={entry}/>
+
+                    })}
+
+
                 </Table>
             </Container>
         </div> //See House.js in HouseAPI example for JSX formatting and logic
@@ -70,9 +85,3 @@ export default ViewAllEntries;
 
 //Does the Entries component add the entry to the dictionary or does the CreateEntryBtn or CreateEntryForm? I would think the CreateEntryBtn
 
-{/* <tr key={myEntries[i].id}>
-<td>{myEntries[i].wordKey}</td>
-<td>{entry.wordValue}</td>
-<td>test</td>
-<td>test</td>
-</tr> */}

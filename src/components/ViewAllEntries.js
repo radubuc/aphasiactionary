@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { InputContext } from "../App";
+import Entry from "./Entry";
 
 import { aphasiactionaryAPI } from "./RestApi";
 // import { wordKey, wordValue } from "./CreateEntryForm";
@@ -10,7 +11,10 @@ import Container from 'react-bootstrap/Container';
 import '../styles.css';
 
 //Since the entries will change, I don't think I should use a const. I think I should make it a function to grab all the entries? function name() {} or arrow function?
-function ViewAllEntries() {
+function ViewAllEntries(props) {
+    console.log("ViewAllEntries props:", props.entries);
+
+    const myEntries = props.entries;
     //In Dictionary API example, his ResultList does the work on my ViewAllEntries
     const { inputText, setInputText } = useContext(InputContext);
     const [response, setResponse] = useState(null); //Null or empty string?
@@ -20,10 +24,17 @@ function ViewAllEntries() {
     const [wordValue, setWordValue] = useState("");
 
     useEffect(() => {
-// https://www.youtube.com/watch?v=BfnbPwqHhfY 24:01
+        // https://www.youtube.com/watch?v=BfnbPwqHhfY 24:01
     }, [])
 
     //NEED TO ROUTE THRU ENTRY COMPONENT FIRST BEFORE GETTING TO VIEWALLENTRIES COMPONENT??? Makes sense
+
+    const getMyEntries = () => {
+        for (let i = 0; i < myEntries.length; i++) {
+            return <Entry entry={myEntries[i]} />
+        }
+    }
+
 
     return (
         <div className="wrapper">
@@ -37,13 +48,9 @@ function ViewAllEntries() {
                             <th>Delete word</th>
                         </tr>
                     </thead>
-                    <tr>
-                        <td>{wordKey}</td> 
-                        <td>{wordValue}</td>
-                        <td>test</td>
-                        <td>test</td>
-                    </tr>
-                </Table> 
+                    {getMyEntries}
+                    
+                </Table>
             </Container>
         </div> //See House.js in HouseAPI example for JSX formatting and logic
     );
@@ -63,3 +70,9 @@ export default ViewAllEntries;
 
 //Does the Entries component add the entry to the dictionary or does the CreateEntryBtn or CreateEntryForm? I would think the CreateEntryBtn
 
+{/* <tr key={myEntries[i].id}>
+<td>{myEntries[i].wordKey}</td>
+<td>{entry.wordValue}</td>
+<td>test</td>
+<td>test</td>
+</tr> */}
